@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseball Monster - Implementation Guide</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2d7a3e;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            color: #2d7a3e;
+            font-size: 1.8rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        h3 {
+            color: #475569;
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .version {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        code {
+            background: #f1f5f9;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #dc2626;
+        }
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        pre code {
+            background: none;
+            color: #e2e8f0;
+            padding: 0;
+        }
+        .note {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #dcfce7;
+            border-left: 4px solid #22c55e;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .file-list {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            margin: 1rem 0;
+        }
+        ul {
+            margin: 0.5rem 0;
+            padding-left: 2rem;
+        }
+        li {
+            margin: 0.5rem 0;
+        }
+        .step {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid #cbd5e1;
+        }
+        .step h3 {
+            margin-top: 0;
+            color: #2d7a3e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Baseball Monster Implementation Guide</h1>
+
+        <div class="success">
+            <strong>What's Been Updated:</strong>
+            <ul>
+                <li>Position badge colors updated to your exact hex codes</li>
+                <li>Custom dropdown CSS added to main CSS files</li>
+                <li>JavaScript files created for easy implementation</li>
+                <li>Solution provided for keeping selections after page refresh</li>
+            </ul>
+        </div>
+
+        <h2>Files You Need</h2>
+        
+        <div class="file-list">
+            <h3>CSS Files (Required):</h3>
+            <ul>
+                <li><code>bm.light.2025-01-26.01.css</code> - Base light mode styles</li>
+                <li><code>bm.dark.2025-01-26.01.css</code> - Base dark mode styles</li>
+                <li><code>bm.mlb.light.2025-01-26.01.css</code> - Baseball light mode (green theme)</li>
+                <li><code>bm.mlb.dark.2025-01-26.01.css</code> - Baseball dark mode (green theme)</li>
+            </ul>
+            
+            <h3>JavaScript Files (Optional - only if using custom dropdowns):</h3>
+            <ul>
+                <li><code>custom-dropdown.js</code> - Custom dropdown functionality</li>
+                <li><code>position-badges.js</code> - Position badge click handlers</li>
+            </ul>
+        </div>
+
+        <h2>Step 1: Update CSS Files</h2>
+        
+        <div class="step">
+            <h3>Replace Your Old CSS Files</h3>
+            <p>Upload these files to your server and update your HTML to reference them:</p>
+            
+            <pre><code>&lt;!-- For Light Mode --&gt;
+&lt;link rel="stylesheet" href="bm.light.2025-01-26.01.css"&gt;
+&lt;link rel="stylesheet" href="bm.mlb.light.2025-01-26.01.css"&gt;
+
+&lt;!-- For Dark Mode --&gt;
+&lt;link rel="stylesheet" href="bm.dark.2025-01-26.01.css"&gt;
+&lt;link rel="stylesheet" href="bm.mlb.dark.2025-01-26.01.css"&gt;</code></pre>
+        </div>
+
+        <h2>Step 2: Custom Dropdowns (Optional)</h2>
+        
+        <div class="step">
+            <h3>A. Add JavaScript Files</h3>
+            <p>If you want to use the custom dropdowns, add these script tags to your page (right before closing <code>&lt;/body&gt;</code> tag):</p>
+            
+            <pre><code>&lt;script src="custom-dropdown.js"&gt;&lt;/script&gt;
+&lt;script src="position-badges.js"&gt;&lt;/script&gt;</code></pre>
+        </div>
+
+        <div class="step">
+            <h3>B. Update HTML Structure</h3>
+            <p>Replace your old <code>&lt;select&gt;</code> dropdowns with this structure:</p>
+            
+            <pre><code>&lt;div class="modern-filter-group"&gt;
+    &lt;div class="custom-select" data-name="playerFilter"&gt;
+        &lt;div class="custom-select-trigger"&gt;
+            &lt;span class="custom-select-value"&gt;Only Top Players&lt;/span&gt;
+            &lt;span class="custom-select-arrow"&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class="custom-select-options"&gt;
+            &lt;div class="custom-select-option selected" data-value="top"&gt;Only Top Players&lt;/div&gt;
+            &lt;div class="custom-select-option" data-value="all"&gt;All Players&lt;/div&gt;
+            &lt;div class="custom-select-option" data-value="rookies"&gt;Rookies Only&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;select name="playerFilter"&gt;
+            &lt;option value="top" selected&gt;Only Top Players&lt;/option&gt;
+            &lt;option value="all"&gt;All Players&lt;/option&gt;
+            &lt;option value="rookies"&gt;Rookies Only&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+            <div class="note">
+                <strong>How it works:</strong> The hidden <code>&lt;select&gt;</code> element still exists for form submission. The JavaScript automatically syncs the custom dropdown with the hidden select, so your form posts work exactly the same.
+            </div>
+        </div>
+
+        <h2>Step 3: Keep Selections After Refresh (Optional)</h2>
+        
+        <div class="step">
+            <h3>The Problem:</h3>
+            <p>When a user selects "2B" and clicks "Refresh", the page reloads and 2B is no longer highlighted (even though the data is filtered correctly).</p>
+            
+            <h3>The Solution:</h3>
+            <p>Add server-side code to check what was posted and restore the selections.</p>
+            
+            <h3>A. Add Helper Functions (in your .aspx.cs or inline):</h3>
+            <pre><code>protected bool IsPositionSelected(string position)
+{
+    string[] selectedPositions = Request.Form.GetValues("positions[]");
+    return selectedPositions != null && selectedPositions.Contains(position);
+}
+
+protected string GetActiveClass(string position)
+{
+    return IsPositionSelected(position) ? "active" : "";
+}
+
+protected string GetChecked(string position)
+{
+    return IsPositionSelected(position) ? "checked" : "";
+}</code></pre>
+
+            <h3>B. Update Position Badge HTML:</h3>
+            <pre><code>&lt;label class="modern-filter-badge &lt;%= GetActiveClass("2B") %&gt;" data-pos="2B"&gt;
+    &lt;input type="checkbox" name="positions[]" value="2B" &lt;%= GetChecked("2B") %&gt;&gt;
+    2B
+&lt;/label&gt;</code></pre>
+
+            <h3>C. Update "All" Badge:</h3>
+            <pre><code>&lt;div class="modern-filter-badge &lt;%= Request.Form.GetValues("positions[]") == null || 
+     Request.Form.GetValues("positions[]").Length == 0 ? "active" : "" %&gt;" 
+     id="all-badge"&gt;All&lt;/div&gt;</code></pre>
+
+            <h3>D. Complete Working Example:</h3>
+            <p>Here's a complete example showing all the pieces together:</p>
+            <pre><code>&lt;%@ Page Language="C#" %&gt;
+
+&lt;script runat="server"&gt;
+    protected bool IsPositionSelected(string position)
+    {
+        string[] selectedPositions = Request.Form.GetValues("positions[]");
+        return selectedPositions != null && selectedPositions.Contains(position);
+    }
+    
+    protected string GetActiveClass(string position)
+    {
+        return IsPositionSelected(position) ? "active" : "";
+    }
+    
+    protected string GetChecked(string position)
+    {
+        return IsPositionSelected(position) ? "checked" : "";
+    }
+&lt;/script&gt;
+
+&lt;form method="POST"&gt;
+    &lt;div class="modern-filter-badges"&gt;
+        &lt;div class="modern-filter-badge &lt;%= Request.Form.GetValues("positions[]") == null ? "active" : "" %&gt;" id="all-badge"&gt;All&lt;/div&gt;
+        &lt;div class="modern-filter-badge" id="clear-badge"&gt;Clear&lt;/div&gt;
+        
+        &lt;label class="modern-filter-badge &lt;%= GetActiveClass("C") %&gt;" data-pos="C"&gt;
+            &lt;input type="checkbox" name="positions[]" value="C" &lt;%= GetChecked("C") %&gt;&gt;
+            C
+        &lt;/label&gt;
+        
+        &lt;label class="modern-filter-badge &lt;%= GetActiveClass("1B") %&gt;" data-pos="1B"&gt;
+            &lt;input type="checkbox" name="positions[]" value="1B" &lt;%= GetChecked("1B") %&gt;&gt;
+            1B
+        &lt;/label&gt;
+        
+        &lt;!-- Add remaining positions... --&gt;
+    &lt;/div&gt;
+    
+    &lt;button type="submit"&gt;Refresh&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script src="position-badges.js"&gt;&lt;/script&gt;</code></pre>
+        </div>
+
+        <h2>Step 4: Customizing Position Colors</h2>
+        
+        <div class="step">
+            <h3>To Change Any Position Color:</h3>
+            <p>Edit the sport-specific CSS file (<code>bm.mlb.light.2025-01-26.01.css</code> or <code>bm.mlb.dark.2025-01-26.01.css</code>) and find the <code>:root</code> section:</p>
+            
+            <pre><code>:root {
+    --pos-c: #0099FF;      /* Cyan - Catcher */
+    --pos-1b: #339900;     /* Green - 1st Base */
+    --pos-2b: #0000cc;     /* Blue - 2nd Base */
+    --pos-ss: #cc0000;     /* Red - Shortstop */
+    --pos-3b: #ff6600;     /* Orange - 3rd Base */
+    --pos-of: #660099;     /* Purple - Outfield */
+    --pos-dh: #1f2937;     /* Dark gray - DH */
+    --pos-sp: #683300;     /* Brown - Starting Pitcher */
+    --pos-rp: #ff0099;     /* Pink - Relief Pitcher */
+    --pos-cl: #ff0099;     /* Pink - Closer */
+    --pos-ph: #6b7280;     /* Gray - Pinch Hitter */
+}</code></pre>
+
+            <p>Just replace the hex code with your preferred color!</p>
+        </div>
+
+        <h2>Quick Reference</h2>
+        
+        <div class="step">
+            <h3>Position Badge HTML Structure:</h3>
+            <pre><code>&lt;label class="modern-filter-badge" data-pos="C"&gt;
+    &lt;input type="checkbox" name="positions[]" value="C"&gt;
+    C
+&lt;/label&gt;</code></pre>
+            
+            <h3>All/Clear Badges:</h3>
+            <pre><code>&lt;div class="modern-filter-badge active" id="all-badge"&gt;All&lt;/div&gt;
+&lt;div class="modern-filter-badge" id="clear-badge"&gt;Clear&lt;/div&gt;</code></pre>
+
+            <h3>Page Title:</h3>
+            <pre><code>&lt;h1 class="page-title"&gt;Player Rankings&lt;/h1&gt;</code></pre>
+        </div>
+
+    </div>
+</body>
+</html>
