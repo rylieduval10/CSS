@@ -1,0 +1,147 @@
+/* 
+ * Baseball Monster - MLB Colors Override
+ * Version: bm.mlb.2025-01-26.02.dark.css
+ * Theme: Dark with GREEN GLOW
+ * 
+ * Usage: Load AFTER bm.2025-01-26.02.dark.css
+ * Example:
+ *   <link rel="stylesheet" href="bm.2025-01-26.02.dark.css" />
+ *   <link rel="stylesheet" href="bm.mlb.2025-01-26.02.dark.css" />
+ */
+
+ :root {
+    /* BASEBALL BRAND COLORS WITH GLOW */
+    --brand-primary: #2d7a3e;        /* Baseball green */
+    --brand-primary-light: #3d9b4f;
+    --brand-primary-dark: #1e5a2d;
+    --brand-accent: #4ade80;         /* Bright green accent */
+    
+    /* POSITION COLORS - Baseball positions */
+    --pos-c: #0099FF;      /* Cyan - Catcher */
+    --pos-1b: #339900;     /* Green - 1st Base */
+    --pos-2b: #0000cc;     /* Blue - 2nd Base */
+    --pos-ss: #cc0000;     /* Red - Shortstop */
+    --pos-3b: #ff6600;     /* Orange - 3rd Base */
+    --pos-of: #660099;     /* Purple - Outfield */
+    --pos-dh: #94a3b8;     /* Light gray - Designated Hitter (lighter for dark mode) */
+    --pos-sp: #a16b3a;     /* Lighter Brown - Starting Pitcher (lighter for dark mode) */
+    --pos-rp: #ff0099;     /* Pink - Relief Pitcher */
+    --pos-cl: #ff0099;     /* Pink - Closer */
+    --pos-ph: #94a3b8;     /* Light gray - Pinch Hitter (lighter for dark mode) */
+}
+
+/* Update SVG dropdown arrows to green */
+.modern-filter-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%232d7a3e' d='M5 7L1 3h8z'/%3E%3C/svg%3E");
+}
+
+/* Enhanced green glow effects */
+.navbar-dark {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4), 0 0 30px rgba(45, 122, 62, 0.15);
+}
+
+.navbar-brand:hover img {
+    filter: drop-shadow(0 0 10px #2d7a3e);
+}
+
+.nav-link:hover {
+    text-shadow: 0 0 8px #4ade80;
+}
+
+.navbar input.form-control:focus {
+    border-color: #4ade80;
+    box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.3), 0 0 20px rgba(74, 222, 128, 0.2);
+}
+
+.nav-item.text-light .nav-link {
+    box-shadow: 0 0 15px rgba(45, 122, 62, 0.4);
+}
+
+.nav-item.text-light .nav-link:hover {
+    box-shadow: 0 0 20px rgba(61, 155, 79, 0.6);
+}
+
+.page-header {
+    box-shadow: 0 20px 40px rgba(45, 122, 62, 0.3), 0 0 60px rgba(45, 122, 62, 0.2);
+}
+
+.page-header h1 {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 30px rgba(74, 222, 128, 0.3);
+}
+
+.modern-filter-container {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(45, 122, 62, 0.05);
+}
+
+.modern-filter-section-title {
+    text-shadow: 0 0 10px rgba(45, 122, 62, 0.2);
+}
+
+.modern-filter-select:hover {
+    box-shadow: 0 0 15px rgba(45, 122, 62, 0.3);
+}
+
+.modern-filter-select:focus {
+    box-shadow: 0 0 0 3px rgba(45, 122, 62, 0.2), 0 0 20px rgba(45, 122, 62, 0.3);
+}
+
+.modern-filter-toggle input[type="checkbox"]:checked + .modern-filter-toggle-switch {
+    box-shadow: 0 0 15px rgba(45, 122, 62, 0.5), inset 0 0 10px rgba(45, 122, 62, 0.3);
+}
+
+.modern-filter-badge:not([data-pos]):hover {
+    box-shadow: 0 0 15px rgba(45, 122, 62, 0.3);
+}
+
+.modern-filter-badge:not([data-pos]).active {
+    box-shadow: 0 3px 10px rgba(45, 122, 62, 0.4), 0 0 20px rgba(45, 122, 62, 0.4);
+}
+
+.modern-filter-btn-primary {
+    box-shadow: 0 0 15px rgba(45, 122, 62, 0.3);
+}
+
+.modern-filter-btn-primary:hover {
+    box-shadow: 0 3px 10px rgba(45, 122, 62, 0.4), 0 0 25px rgba(45, 122, 62, 0.5);
+}
+
+.modern-filter-btn-secondary:hover {
+    box-shadow: 0 0 15px rgba(45, 122, 62, 0.2);
+}
+
+.dropdown-item:hover {
+    box-shadow: 0 0 15px rgba(45, 122, 62, 0.4);
+}
+
+.filter-controls label:hover {
+    box-shadow: 0 0 15px rgba(45, 122, 62, 0.3);
+}
+
+.filter-controls input[type="radio"]:checked + label,
+.filter-controls input[type="checkbox"]:checked + label {
+    box-shadow: 0 0 20px rgba(45, 122, 62, 0.5);
+}
+
+.card-based:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(45, 122, 62, 0.15);
+}
+
+.player-status-item:hover {
+    box-shadow: 0 0 15px rgba(45, 122, 62, 0.2);
+}
+
+footer a:hover {
+    text-shadow: 0 0 10px #2d7a3e;
+}
+
+/* Page title with green background spanning full width */
+.page-title {
+    background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
+    color: white;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 2rem 0;
+    padding: 1.5rem 1rem;
+    box-shadow: 0 4px 12px rgba(45, 122, 62, 0.4);
+    border-radius: 8px;
+}
